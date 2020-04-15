@@ -1,0 +1,90 @@
+/*
+ *
+ *   INSPINIA - Responsive Admin Theme
+ *   version 2.2
+ *
+*/
+// Google Fonts
+//@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("//fonts.googleapis.com/css?family=Avenir:300,400,600,700&lang=en");
+
+@font-face {
+  font-family: 'Avenir Medium';
+  src: font_url('avenir/Avenir-Medium.eot');
+  src: font_url('avenir/Avenir-Medium.woff') format('woff'),
+  font_url('avenir/Avenir-Medium.ttf') format('truetype'),
+  font_url('avenir/Avenir-Medium.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Black';
+  src: font_url('avenir/Avenir-Black.eot');
+  src: font_url('avenir/Avenir-Black.woff') format('woff'),
+  font_url('avenir/Avenir-Black.ttf') format('truetype'),
+  font_url('avenir/Avenir-Black.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Heavy';
+  src: font_url('avenir/Avenir-Heavy.eot');
+  src: font_url('avenir/Avenir-Heavy.woff') format('woff'),
+  font_url('avenir/Avenir-Heavy.ttf') format('truetype'),
+  font_url('avenir/Avenir-Heavy.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Roman';
+  src: font_url('avenir/Avenir-Roman.eot');
+  src: font_url('avenir/Avenir-Roman.woff') format('woff'),
+  font_url('avenir/Avenir-Roman.ttf') format('truetype'),
+  font_url('avenir/Avenir-Roman.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Bootstrap
+//@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// Variables, Mixins
+@import "base/variables";
+@import "base/mixins";
+
+// INSPINIA Theme Elements
+@import "base/typography";
+@import "base/navigation";
+@import "base/top_navigation";
+@import "base/buttons";
+@import "base/badgets_labels";
+@import "base/elements";
+@import "base/sidebar";
+@import "base/base";
+@import "base/pages";
+@import "base/chat";
+@import "base/metismenu";
+@import "base/spinners";
+
+// Landing page
+@import "base/landing";
+
+// RTL Support
+@import "base/rtl";
+
+// For demo only - config box style
+@import "base/theme-config";
+
+// INSPINIA Skins
+@import "base/skins";
+
+// Media query style
+@import "base/media";
+
+// Custom style
+// Your custom style to override base style
+@import "base/custom";

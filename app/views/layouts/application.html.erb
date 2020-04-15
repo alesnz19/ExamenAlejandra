@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <%= favicon_link_tag 'logoKS.png' %>
+  <meta name="format-detection" content="telephone=no">
+  <title>ExamenFront</title>
+  <%= Gon::Base.render_data %>
+  <%= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="pace-done">
+<!-- Wrapper-->
+<div id="wrapper">
+  <%= render 'layouts/navigation' %>
+
+  <!-- Navigation -->
+
+  <!-- Page wraper -->
+  <div id="page-wrapper" class="gray-bg">
+
+    <!-- Page wrapper -->
+    <%= render 'layouts/topnavbar' %>
+
+    <div class="alert alert-success alert-dismissible" style="display: none;" id="mensaje">
+    </div>
+
+    <input type="hidden" value="<%= I18n.locale %>" id="idiomalocale">
+    <input type="hidden" value="<%= I18n.locale %>" id="idioma_app">
+
+    <!-- Main view  -->
+    <% if notice %>
+      <div class="alert alert-success alert-dismissible" id="mensaje1">
+        <label><%= notice %></label>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible" id="mensaje2">
+        <label id="msj"><%= alert %></label>
+      </div>
+    <% end %>
+    <%= yield %>
+
+    <!-- Footer -->
+    <%= render 'layouts/footer' %>
+
+  </div>
+  <!-- End page wrapper-->
+
+</div>
+<!-- End wrapper-->
+</body>
+<%# else %>
+
+<!--<body style="background-color: #f3f3f4;">-->
+
+<div class="container" id="mensaje3">
+  <div class="alert alert-success" role="alert" style="display: none;">
+    <p><label><%= notice %></label></p>
+  </div>
+</div>
+
+<%#= current_user.name %>
+
+<% if notice %>
+  <div class="container" id="mensaje4">
+    <div class="alert alert-success alert-dismissable">
+      <p><label><%= notice %></label></p>
+    </div>
+  </div>
+<% elsif alert %>
+  <!--<<div class="ibox-content ">-->
+  <div class="container" id="mensaje5">
+    <div class="alert alert-danger alert-dismissable">
+      <p><label id="msj"><%= alert %></label></p>
+    </div>
+  </div>
+<% end %>
+
+<%= javascript_include_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+<%= yield :stylesheet %>
+<%= yield :javascript %>
+</html>
+
+<script type="text/javascript" charset="utf-8">
+    $("#mensaje1,#mensaje2,#mensaje3,#mensaje4,#mensaje5").fadeTo(3500, 500).slideUp(500, function () {
+        $("#mensaje2").slideUp(500);
+    });
+</script>
+
+
+
+

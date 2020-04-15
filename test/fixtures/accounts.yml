@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accountnumber: MyString
+  belongto: MyString
+  client: one
+
+two:
+  accountnumber: MyString
+  belongto: MyString
+  client: two

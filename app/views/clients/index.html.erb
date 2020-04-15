@@ -1,0 +1,116 @@
+<script type="text/javascript" language="javascript" class="init">
+    $(document).ready(function () {
+        $('table').footable({paginate: false});
+    });
+</script>
+
+<div class="wrapper wrapper-content animated fadeInRight" style="padding-top: 0px;">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h1>Clientes</h1>
+          <div class="ibox-content">
+<%# <%****************************** Body *********************************** %>
+<%# <%*********************** Barra de busqueda *******************************%>
+            <%= form_tag({:controller => "clients", :action => "index"},:name => "form1", :method => "get",id: "clientsearch") do %>
+              <div class ="row">
+                <div id="searchbar" class="col-xs-12 col-sm-11 col-md-6 col-lg-4 form-group">
+                  <div class="input-group">
+                    <input type="search" class="form-control" name="search" autocomplete="off" id="client_search" placeholder="Realice su busqueda">
+                    <span class="input-group-btn">
+                <%= button_tag(type: 'submit', class: 'btn btn-primary', id:"btnrt") do %>
+                <i class="fa fa-search"> Buscar</i>
+                <% end %>
+              </span>
+                  </div>
+                </div>
+                <div id="ayuda" class="col-md-2 col-sm-1 col-xs-2" style="padding-left: 0px;">
+                  <span class="badge badge-secondary red-tooltip" id="help" data-toggle="tooltip" title="Limpia para una nueva busqueda">? </span>
+                </div>
+              </div>
+            <% end %>
+
+            <div id="clientetabla"><%= render 'clientetabla' %></div>
+<%# <%****************************** Body *********************************** %>
+<%# <%****************************** Body *********************************** %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnrt").click(function() {
+            $.get($("#clientsearch").attr("action"), $("#clientsearch").serialize(), null, "script");
+            return false;
+        });
+    });
+
+    $('#client_search').on('input',function() {
+        if ($('#client_search').val().trim() == "") {
+            $("#btnrt").click();
+        }
+    });
+
+
+    $(document).on("click", ".clients", function () {
+        var id = this.id;
+        var client = $("#client" + id).val();
+        swal({
+                title: 'Advertencia',
+                text: '¿Seguro que desa eliminar el   ' + '<strong>' + 'Cliente ' + '</strong>' + '<strong class="text-warning">' + client+ '</strong>' + '?',
+                type: "warning",
+                html: true,
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sí, ¡continúe! ",
+                cancelButtonText: "¡Cancelar!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                            title: 'Advertencia',
+                            text: 'Toda la información del Cliente se eliminará, ¿Está seguro?',
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Sí, ¡continúe!",
+                            cancelButtonText: "¡Cancelar!",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                $.ajax({
+                                    type: "POST",
+                                    beforeSend: function (xhr) {
+                                        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+                                    },
+                                    url: "/clients/" + id,
+                                    data: {"_method": "delete"},
+                                });
+                                //swal("Dato Eliminado");
+                                swal(
+                                    {
+                                        title: 'El cliente fue eliminado con éxito',
+                                        type: "success",
+                                        confirmButtonText: "OK",
+                                    })
+                            } else {
+                                swal("Eliminación Cancelada");
+                            }
+                        })
+                } else {
+                    swal("Eliminación Cancelada");
+                }
+            });
+    })
+
+</script>

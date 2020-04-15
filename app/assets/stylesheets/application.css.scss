@@ -1,0 +1,97 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+
+ *= require animate/animate.css
+ *= require style
+ *= require font-awesome
+ *= require smartadmin-production-plugins
+ */
+/* Forms */
+//= require iCheck/custom.css
+//= require steps/jquery.steps.css
+//= require summernote/summernote-bs3.css
+//= require summernote/summernote.css
+//= require dropzone/basic.css
+//= require dropzone/dropzone.css
+//= require colorpicker/css/bootstrap-colorpicker.min.css
+//= require cropper/cropper.min.css
+//= require datapicker/datepicker3.css
+//= require ionRangeSlider/ion.rangeSlider.css
+//= require ionRangeSlider/ion.rangeSlider.skinFlat.css
+//= require jasny/jasny-bootstrap.min.css
+//= require nouslider/jquery.nouislider.css
+//= require switchery/switchery.css
+//= require chosen/chosen.css
+//= require daterangepicker/daterangepicker-bs3.css
+//= require clockpicker/clockpicker.css
+//= require awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css
+/* Dashbord */
+//= require toastr/toastr.min.css
+//= require jvectormap/jquery-jvectormap-2.0.2.css
+/* Miscellaneous */
+
+//= require codemirror/ambiance.css
+//= require codemirror/codemirror.css
+//= require jsTree/style.min.css
+//= require sweetalert/sweetalert.css
+/* Tables */
+//= require footable/footable.core.css
+//= require footable/footable.core
+//= require dataTables/dataTables.responsive
+//= require dataTables/dataTables.tableTools.min.css
+//@import '@import "font-awesome';
+@import 'font-awesome';
+//@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import url("//fonts.googleapis.com/css?family=Avenir:300,400,600,700&lang=en");
+//@import 'bootstrap-datetimepicker';
+@font-face {
+  font-family: 'Avenir Medium';
+  src: url('avenir/Avenir-Medium.eot');
+  src: url('avenir/Avenir-Medium.woff') format('woff'),
+  url('avenir/Avenir-Medium.ttf') format('truetype'),
+  url('avenir/Avenir-Medium.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Black';
+  src: url('avenir/Avenir-Black.eot');
+  src: url('avenir/Avenir-Black.woff') format('woff'),
+  url('avenir/Avenir-Black.ttf') format('truetype'),
+  url('avenir/Avenir-Black.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Heavy';
+  src: url('avenir/Avenir-Heavy.eot');
+  src: url('avenir/Avenir-Heavy.woff') format('woff'),
+  url('avenir/Avenir-Heavy.ttf') format('truetype'),
+  url('avenir/Avenir-Heavy.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Roman';
+  src: url('avenir/Avenir-Roman.eot');
+  src: url('avenir/Avenir-Roman.woff') format('woff'),
+  url('avenir/Avenir-Roman.ttf') format('truetype'),
+  url('avenir/Avenir-Roman.svg#linecons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

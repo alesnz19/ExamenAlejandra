@@ -1,0 +1,83 @@
+<%# <%********************* Sweetalert No Results *************************** %>
+<% if @error.present? %>
+  <script>
+      swal({
+          title: "Advertencia", text: "No se encontraron resultados", type: "warning"
+      });
+  </script>
+<% end %>
+<%# <%********************** Paginacion & Boton Crear *******************************%>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <%= link_to '<span class="fa fa-cc-mastercard "></span> '.html_safe + 'Nuevo', new_account_path, :class => 'btn btn-primary btn-xs btx' %>
+  </div>
+  <div class="col-xs-12 col-md-8 form-group" align="right">
+    <div class="detall_right">
+      <% if @accounts.length == 1 %>
+        <%= page_entries_info @accounts, entry_name: "Cuenta" %>
+      <% else %>
+        <%= page_entries_info @accounts, entry_name: "Cuentas".pluralize() %>
+      <% end %>
+    </div>
+    <div class="pag_right">
+      <%= paginate @accounts, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm", :remote => true %>
+    </div>
+  </div>
+</div>
+
+<%# <%********************** Tabla Clientes *******************************%>
+<div id="tabla_cuentas" style="overflow: auto;">
+  <table class="table footable no-paging">
+    <thead>
+    <tr>
+      <th class="text-left" data-sort-ignore="true">Numero cuenta</th>
+      <th class="text-center" data-sort-ignore="true">Pertenece a</th>
+      <th class="text-center" data-sort-ignore="true" data-hide="phone">Mostrar</th>
+      <th class="text-center" data-sort-ignore="true" data-hide="phone">Editar</th>
+      <th class="text-center" data-sort-ignore="true" data-hide="phone">Eliminar</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @accounts.each do |account| %>
+      <tr id="account_<%= account.id %>">
+        <td class="text-left" data-sort-ignore="true">
+          ************<%= account.accountnumber.last(4) %>
+        </td>
+        <td class="text-center" data-sort-ignore="true">
+          <%= account.client.name%><%= account.client.lastname%>  <%=account.client.lastnamem%>
+        </td>
+        <td class="text-center"><%= link_to '<i class="fa fa-file-text"></i>'.html_safe, account, class: "btn btn-xs btn-primary btx", :data => {toggle: "tooltip"}, title: "Mostrar" %></td>
+        <td class="text-center"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_account_path(account), class: "btn btn-xs btn-warning btx", :data => {toggle: "tooltip"}, title: "Editar" %></td>
+        <td class="text-center">
+          <input type="hidden" value="<%= account.accountnumber.last(4) %>" id="account<%= account.id %>">
+          <button class="btn btn-danger btn-xs  accounts" type="button" id="<%= account.id %>" data-toggle="tooltip" title="Eliminar">
+            <i class="fa fa-trash-o"></i>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<%# <%********************** Paginacion & Boton Crear *******************************%>
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <%= link_to '<span class="fa fa-cc-mastercard "></span> '.html_safe + 'Nuevo', new_account_path, :class => 'btn btn-primary btn-xs btx' %>
+  </div>
+  <div class="col-xs-12 col-md-8 form-group" align="right">
+    <div class="detall_right">
+      <% if @accounts.length == 1 %>
+        <%= page_entries_info @accounts, entry_name: "Cuenta" %>
+      <% else %>
+        <%= page_entries_info @accounts, entry_name: "Cuentas".pluralize() %>
+      <% end %>
+    </div>
+    <div class="pag_right">
+      <%= paginate @accounts, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm", :remote => true %>
+    </div>
+  </div>
+</div>
+
+
+

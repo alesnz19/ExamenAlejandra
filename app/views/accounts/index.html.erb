@@ -1,0 +1,175 @@
+<script type="text/javascript" language="javascript" class="init">
+    $(document).ready(function () {
+        $('table').footable({paginate: false});
+    });
+</script>
+
+<div class="wrapper wrapper-content animated fadeInRight" style="padding-top: 0px;">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h1>Cuentas</h1>
+          <div class="ibox-content">
+<%# <%****************************** Body *********************************** %>
+<%# <%*********************** Barra de busqueda *******************************%>
+            <%= form_tag({:controller => "accounts", :action => "index"}, :method => "get",id: "accountsearch") do %>
+              <div class ="row">
+                <div id="searchbar" class="col-xs-12 col-sm-11 col-md-6 col-lg-4 form-group">
+                  <div class="input-group">
+                    <input type="search" class="form-control" name="search" autocomplete="off" id="account_search" placeholder="Realice su busqueda">
+                    <span class="input-group-btn">
+                <%= button_tag(type: 'submit', class: 'btn btn-primary', id:"btnrt") do %>
+                <i class="fa fa-search"> Buscar</i>
+                <% end %>
+              </span>
+                  </div>
+                </div>
+                <div id="ayuda" class="col-md-2 col-sm-1 col-xs-2" style="padding-left: 0px;">
+                  <span class="badge badge-secondary red-tooltip" id="help" data-toggle="tooltip" title="Limpia para una nueva busqueda">? </span>
+                </div>
+              </div>
+            <% end %>
+
+            <div id="accountabla"><%= render 'accountabla' %></div>
+<%# <%****************************** Body *********************************** %>
+<%# <%****************************** Body *********************************** %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#btnrt").click(function() {
+            $.get($("#accountsearch").attr("action"), $("#accountsearch").serialize(), null, "script");
+            return false;
+        });
+    });
+
+    $('#account_search').on('input',function() {
+        if ($('#account_search').val().trim() == "") {
+            $("#btnrt").click();
+        }
+    });
+
+    $(document).on("click", ".accounts", function () {
+        var id = this.id;
+        var account = $("#account" + id).val();
+        swal({
+                title: 'Advertencia',
+                text: '¿Seguro que desa eliminar la   ' + '<strong>' + 'cuenta ' + '</strong>' + '<strong class="text-warning">' + account+ '</strong>' + '?',
+                type: "warning",
+                html: true,
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sí, ¡continúe! ",
+                cancelButtonText: "¡Cancelar!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    swal({
+                            title: 'Advertencia',
+                            text: 'Toda la información de la cuenta se eliminará, ¿Está seguro?',
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Sí, ¡continúe!",
+                            cancelButtonText: "¡Cancelar!",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                $.ajax({
+                                    type: "POST",
+                                    beforeSend: function (xhr) {
+                                        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+                                    },
+                                    url: "/accounts/" + id,
+                                    data: {"_method": "delete"},
+                                });
+                                //swal("Dato Eliminado");
+                                swal(
+                                    {
+                                        title: 'La cuenta fue eliminada con éxito',
+                                        type: "success",
+                                        confirmButtonText: "OK",
+                                    })
+                            } else {
+                                swal("Eliminación Cancelada");
+                            }
+                        })
+                } else {
+                    swal("Eliminación Cancelada");
+                }
+            });
+    })
+
+</script>
+
+<style>
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #003057;
+    width: 35px;
+    height: 35px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+    display: none;
+
+    /*Centrar*/
+    position: absolute;
+    margin: auto;
+    /*top: 300px;*/
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+  }
+
+  .loader2 {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #003057;
+    width: 35px;
+    height: 35px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+    display: none;
+
+    /*Centrar*/
+    position: absolute;
+    margin: auto;
+    /*top: 300px;*/
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>

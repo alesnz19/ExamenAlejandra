@@ -1,0 +1,153 @@
+<%= form_for @client, :html => {:id => 'form1'} do |f| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> al guardar el cliente:</h2>
+      <ul>
+        <% client.errors.full_messages.each do |message| %>
+          <li><%= message %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-2 col-lg-2"></div>
+    <div class="col-xs-6 col-lg-7">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="field">
+            <p class="text-center">
+              <label>Nombre</label>
+              <%= f.text_field :name, class: 'form-control', autocomplete: 'off', placeholder: " Nombre", id: "name", :maxlength => 100%>
+              <small id="labname" style="display: none;">.</small>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="field">
+            <p class="text-center">
+              <label>Apellido Paterno</label>
+              <%= f.text_field :lastname, class: 'form-control', autocomplete: 'off', placeholder: " Apellido Paterno", id: "ap", :maxlength => 100 %>
+              <small id="labap" style="display: none;">.</small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="field">
+            <p class="text-center">
+              <label>Apellido Materno</label>
+              <%= f.text_field :lastnamem, class: 'form-control', autocomplete: 'off', placeholder: " Apellido Materno", :id => "am", :maxlength => 100%>
+              <small id="labam" style="display: none;">.</small>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="col-xs-6">
+          <div class="form-group" id="data_1">
+            <p class="text-center">
+              <label> Edad</label>
+            <div class="input-group  datepicker" data-autoclose="true" data-placement="left">
+              <span class="input-group-addon"><i class="fa fa-calendar" id="cumple"></i></span>
+              <%= f.text_field :age, class: "form-control bir onlynumbers", :placeholder => 'DD/MM/YYYY', :id => 'birthday',  :autocomplete => :off %>
+            </div>
+            <small id="labbirthday" style="display: none;">.</small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="field">
+            <div align="center" class="form-group">
+              <label>Teléfono</label>
+              <%= f.text_field :phone, class: 'form-control', autocomplete: 'off', placeholder: 'Teléfono', id: 'phon',  maxlength:  10 %>
+              <small id="labphon" style="display: none;">.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Dirección</legend>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="field">
+              <div align="center" class="form-group">
+                <label>Calle</label>
+                <%= f.text_field :street, class: 'form-control', autocomplete: 'off', placeholder: " Calle", :id => "add", :maxlength => 50 %>
+                <small id="labadd" style="display: none;">.</small>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xs-6">
+            <div class="field">
+              <div align="center" class="form-group">
+                <label>Colonia</label>
+                <%= f.text_field :colony, class: 'form-control', autocomplete: 'off', placeholder: " Colonia", :id => "col", :maxlength => 50 %>
+                <small id="labcol" style="display: none;">.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="field">
+              <div align="center" class="form-group">
+                <label>Número de Casa</label>
+                <%= f.text_field :housenumber, class: 'form-control', autocomplete: 'off', placeholder: " Número de Casa", :id => "casa", :maxlength => 3%>
+                <small id="labcasa" style="display: none;">.</small>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xs-6">
+            <div class="field">
+              <div align="center" class="form-group">
+                <label>Municipio</label>
+                <%= f.text_field :town, class: 'form-control', autocomplete: 'off', placeholder: " Municipio", :id => "mun", :maxlength => 50 %>
+                <small id="labmun" style="display: none;">.</small>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </fieldset>
+    </div>
+    <div class="col-xs-12 hr-line-dashed"></div>
+    <div class="col-xs-12">
+      <div class="actions">
+        <button type="submit" , class="btn btn-xs btn-primary btx" , value=" Guardar" , name="btnSave">
+          <span class="fa fa-user"> Guardar</span>
+        </button>
+        <%= link_to '<span class="fa fa-user" ></span>  '.html_safe + " Cancelar", clients_path, :class => 'btn btn-xs btn-warning btx' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('table').footable({paginate: false});
+    });
+
+    // $('#bir .input-group.date').datepicker({
+    //     todayBtn: "linked",
+    //     keyboardNavigation: false,
+    //     forceParse: false,
+    //     calendarWeeks: true,
+    //     autoclose: true
+    // });
+</script>
+
+

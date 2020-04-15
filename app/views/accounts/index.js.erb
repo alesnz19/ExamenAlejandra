@@ -1,0 +1,14 @@
+$("#accountabla").html("<%= escape_javascript(render("accountabla")) %>");
+$('table').footable({paginate: false});
+if ($(window).width() <= 425) {
+  var hlp = document.getElementById('ayuda')
+  hlp.parentNode.removeChild(hlp);
+  document.getElementById('btnrt').innerHTML="<i class='fa fa-search'></i>"
+  document.getElementById('searchbar').style.padding = "0px"
+  var x = document.getElementsByClassName("btx");
+  var i;
+  for (i = 0; i < x.length; i++) {
+     x[i].classList.remove('btn-xs');
+     x[i].classList.add('btn-block');
+   }
+}

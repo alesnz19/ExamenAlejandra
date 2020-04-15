@@ -1,0 +1,45 @@
+<div class="block-area wrapper wrapper-content animated fadeInRight" id="responsiveTable">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h1>Mostrar Cuenta</h1>
+          <div class="ibox-content" id="responsiveTable">
+            <div class="row">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-10 text-left">
+                <div class="ibox" style="border:1px solid #E7EAEC">
+                  <div class="ibox-title" style="color: #2F4050">
+
+                  </div>
+                  <div class="ibox-content" style="display: block;">
+                    <table class="footable table table-stripped toggle-arrow-tiny">
+                      <tbody>
+                      <tr>
+                        <td><strong>Número de Cuenta:</strong></td>
+                        <td>  ************<%= @account.accountnumber.last(4) %></td>
+                      </tr>
+
+                      <tr>
+                        <td> <strong>Pertenece a:</strong></td>
+                        <td><%= @account.client.name%><%= @account.client.lastname%>  <%=@account.client.lastnamem%>  </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-1"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <%= link_to '<i class="span class="fa fa-cc-mastercard"></i> '.html_safe + "Volver",  accounts_path, :class => 'btn btn-xs btn-primary bx' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

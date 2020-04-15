@@ -1,0 +1,82 @@
+<div class="block-area wrapper wrapper-content animated fadeInRight" id="responsiveTable">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h1>Mostrar Cliente</h1>
+          <div class="ibox-content" id="responsiveTable">
+            <div class="row">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-10 text-left">
+                <div class="ibox" style="border:1px solid #E7EAEC">
+                  <div class="ibox-title" style="color: #2F4050">
+
+                  </div>
+                  <div class="ibox-content" style="display: block;">
+                    <table class="footable table table-stripped toggle-arrow-tiny">
+                      <tbody>
+                      <tr>
+                        <td><strong>Nombre:</strong></td>
+                        <td>
+                        <%= @client.name %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td> <strong>Apellido Paterno:</strong></td>
+                        <td> <%= @client.lastname %></td>
+                      </tr>
+
+                      <tr>
+                        <td><strong>Apellido Materno:</strong></td>
+                        <td><%= @client.lastnamem %></td>
+                      </tr>
+
+                      <tr>
+                        <td><strong>Edad:</strong></td>
+                        <td><%= @client.age %></td>
+                      </tr>
+
+                      <tr>
+                        <td><strong>Teléfono:</strong></td>
+                        <td><%= @client.phone %></td>
+                      </tr>
+
+                      <tr>
+                        <td><strong>Calle:</strong></td>
+                        <td> <%= @client.street %></td>
+
+
+                      </tr>
+
+                      <tr>
+                        <td> <strong>Colonia:</strong></td>
+                        <td><%= @client.colony %></td>
+                      </tr>
+
+                      <tr>
+                        <td><strong>Número Casa:</strong></td>
+                        <td><%= @client.housenumber %></td>
+                      </tr>
+
+                      <tr>
+                        <td> <strong>Municipio:</strong></td>
+                        <td><%= @client.town %></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-1"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <%= link_to '<i class="span class="fa fa-user"></i> '.html_safe + "Volver", clients_path, :class => 'btn btn-xs btn-primary' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
