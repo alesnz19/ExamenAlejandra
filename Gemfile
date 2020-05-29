@@ -90,7 +90,7 @@ gem 'zip-zip' # will load compatibility for old rubyzip API.bun
 gem 'jquery-minicolors-rails'
 
 #paginacion
-gem 'kaminari', '~> 1.0', '>= 1.0.1'
+gem 'kaminari', '~> 1.2'
 gem 'bootstrap-kaminari-views'
 
 #Prawn
